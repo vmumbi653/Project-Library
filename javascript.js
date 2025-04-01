@@ -7,15 +7,19 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.id = crypto.randomUUID(); //add random UUID to each book
 }
 
 Book.prototype.addBookToLibrary = function() {
-   return myLibrary = (`${this.title}, written by ${this.author}, ${this.pages} pages, ${this.read}`);
+    //push book object itself to array
+   myLibrary.push(this);
 }
 
 const book1 = new Book ('The Bat', 'Jon Nesbo', '245', 'read');
+const book2 = new Book ('Purple Panties', 'Zane', '200', 'NOT read');
 
 book1.addBookToLibrary();
+book2.addBookToLibrary();
 
 //test new book object is stored in array//
 console.log(myLibrary);
