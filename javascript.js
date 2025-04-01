@@ -1,5 +1,5 @@
 //create empty array to store book objects
-const myLibrary = [];
+let myLibrary = [];
 
 //create book constructor
 function Book(title, author, pages, read) {
@@ -10,9 +10,12 @@ function Book(title, author, pages, read) {
 }
 
 Book.prototype.addBookToLibrary = function() {
-    console.log(`${this.title} written by ${this.author} with ${this.pages} and I have ${this.read}`);
+   return myLibrary = (`${this.title}, written by ${this.author}, ${this.pages} pages, ${this.read}`);
 }
 
-const book1 = new Book ('the Bat', 'Jon Nesbo', '245', 'read');
+const book1 = new Book ('The Bat', 'Jon Nesbo', '245', 'read');
 
 book1.addBookToLibrary();
+
+//test new book object is stored in array//
+console.log(myLibrary);
