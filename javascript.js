@@ -73,7 +73,7 @@ const container = document.querySelector('.card-container');
             //creeate a multi-line string called content that containes the HTML Markup for each card layout
         const content = `
             <div class = 'card-body'>
-              <h5>${book.title}</h5>
+              <h4>${book.title}</h4>
               <p>${book.author}</p>
               <p>${book.pages}</p>
               <p>${book.read}</p>
