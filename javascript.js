@@ -81,4 +81,13 @@ const container = document.querySelector('.card-container');
 
            `;
            container.innerHTML += content;
+    });
+
+    const newBookBtn = document.getElementById('newBook');
+    const dialog = document.getElementById('dialog');
+    const submitBtn = document.getElementById('submit');
+
+    //button shows the dialog modally
+    newBookBtn.addEventListener("click", () => {
+        dialog.showModal();
     })
