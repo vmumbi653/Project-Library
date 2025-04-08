@@ -1,3 +1,12 @@
+html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-image: url(sunset.jpg);
+}
+
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -8,8 +17,10 @@
     padding: 20px;
     border: 1px solid black;
     border-radius: 20px;
+    background-color: #5b2925;
 }
 
 h1, p, h4 {
     text-align: center;
+    color: white;
 }
