@@ -1,3 +1,30 @@
+@font-face {
+    font-family: 'alex_brushregular';
+    src: url('alexbrush-regular-webfont.woff2') format('woff2'),
+         url('alexbrush-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'journalregular';
+    src: url('journal-webfont.woff2') format('woff2'),
+         url('journal-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'alluraregular';
+    src: url('allura-regular-webfont.woff2') format('woff2'),
+         url('allura-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 html {
     padding: 0;
     margin: 0;
@@ -5,28 +32,59 @@ html {
     min-height: 100vh;
     min-width: 100vw;
     background-image: url(sunset.jpg);
+    background-color: #a58569;
     cursor: pointer;
+}
+body {
+    margin: 0;
 }
 
 .card-container {
     display: flex;
     flex-wrap: wrap;
     /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
-    gap: 5px;
+    gap: 10px;
+    margin: 10px;
 }
 
 .card-body {
     padding: 20px;
     border: 1px solid black;
     border-radius: 20px;
+    /* background-color: #34251b; */
     background-color: #5b2925;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
+    font-family: 'journalregular';
+    font-size: 20px;
+    font-weight: bold;
 }
 
 h1, p, h4 {
     text-align: center;
     color: white;
+}
+
+h1 {
+    font-family: 'alluraregular';
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.header-container {
+    background-color:#5b2925;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    
+   
+}
+.header-container > p {
+    font-family: 'alluraregular';
+    font-size: 30px;
 }
 
 /* input[type=checkbox] {
