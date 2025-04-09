@@ -20,16 +20,19 @@ function Book(title, author, pages) {
     this.author = author;
     this.pages = pages;
     this.id = crypto.randomUUID(); //add random UUID to each book
+    this.BookId = `book${++Book.id}`;
   
 
 }
+Book.id = 0;
 
 function bookInfo() {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         let newBook = new Book(title.value, author.value, pages.value);
-
         myLibrary.push(newBook);
+        //to reset form after submission
+        form.reset();
         dialog.close();
 
         addBookToLibrary();
@@ -37,15 +40,15 @@ function bookInfo() {
     )};
     bookInfo();
 
-function addBookToLibrary() {
+function addBookToLibrary(book) {
     container.innerHTML = '';
-    for(let i = 0; i < myLibrary.length; i++) {
+    for(let i = 0; i <= myLibrary.length; i++) {
         bookDisplay(myLibrary[i]);
     }
+    console.log("Book object in addBookToLibrary:", book); // Check the book object here
 
 //    let newBook = new Book(title.value, author.value, pages.value);
     //push book object itself to array
-//    myLibrary.push(newBook);
 }
 
 
@@ -70,6 +73,7 @@ const container = document.querySelector('.card-container');
 // let content;
 
     function bookDisplay(book) {
+        console.log("Book object in bookDisplay:", book); // Check the book object here
     const card = document.createElement('div');
     card.classList.add('card');
     container.appendChild(card);
@@ -90,28 +94,52 @@ const container = document.querySelector('.card-container');
     pages.textContent = `${book.pages} pages`;
     cardBody.appendChild(pages);
 
-    // cardBody.appendChild(title);
-    // cardBody.appendChild(author);
-    // cardBody.appendChild(pages);
+    const removeBtn = document.createElement('button');
+    cardBody.appendChild(removeBtn);
+    removeBtn.textContent = "Remove";
+    removeBtn.onclick = removeBook;
 
+    removeBtn.setAttribute('class', 'bookId');
 
     card.appendChild(cardBody);
-
     container.appendChild(card);
-
-
     // container.innerHTML +=content;
-
 };
 
-// // Iterate through the myLibrary array and display each book
-// function displayAllBooks() {
+//button shows the dialog modally
+newBookBtn.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+//create a remove book function
+
+function removeBook() {
+    const bookId = this.parentElement.classList[1];
+
+    const findBook = myLibrary.findIndex((element) => element.bookId === bookId);
+
+    const deleteBook = myLibrary.splice(findBook, 1);
+    this.parentElement.remove()
+
+}
+bookDisplay();
+
+
+
+// form.addEventListener("submit", (e) => {
+    //     e.preventDefault();
+    //     addBookToLibrary();
+    //     dialog.close();
+    // });
+
+    // function displayAllBooks() {
 //     container.innerHTML = ''; // Clear existing content
 //     myLibrary.forEach(book => {
 //       bookDisplay(book);
 //     });
 //   }
   
+// // Iterate through the myLibrary array and display each book
 //   // Call displayAllBooks to display the books
 //   displayAllBooks();
 
@@ -132,30 +160,8 @@ const container = document.querySelector('.card-container');
 
     // });
 
-    //button shows the dialog modally
-    newBookBtn.addEventListener("click", () => {
-        dialog.showModal();
-    });
 
+  
 
-    // form.addEventListener("submit", (e) => {
-    //     e.preventDefault();
-    //     addBookToLibrary();
-    //     dialog.close();
-    // });
-
-
-//create a remove button
-  const cardBodies = document.getElementsByClassName('card-body');
-
-  Array.from(cardBodies).forEach((cardBody) => {
-    const removeBtn = document.createElement('button');
-    removeBtn.classList.add('removeBtn');
-    removeBtn.textContent = "Remove";
-    cardBody.appendChild(removeBtn);
-
-  });
-
-  const removeBtns = document.querySelectorAll('.removeBtn');
 
   

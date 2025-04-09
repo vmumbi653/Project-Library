@@ -5,11 +5,13 @@ html {
     min-height: 100vh;
     min-width: 100vw;
     background-image: url(sunset.jpg);
+    cursor: pointer;
 }
 
 .card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
     gap: 5px;
 }
 
@@ -18,9 +20,51 @@ html {
     border: 1px solid black;
     border-radius: 20px;
     background-color: #5b2925;
+    width: 150px;
+    height: 150px;
 }
 
 h1, p, h4 {
     text-align: center;
     color: white;
 }
+
+/* input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.toggle {
+    cursor: pointer;
+    width: 200px;
+    text-indent: -9999px;
+    height: 45px;
+    position: relative;
+    display: block;
+    border-radius: 20px;
+    background-color: grey;
+}
+
+.toggle:after {
+    border-radius: 90px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 40px;
+    height: 30px;
+    transition: 0.3s;
+}
+
+input:checked + .toggle {
+    background: #bada55;
+}
+
+input:checked + .toggle:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+.toggle:active:after {
+	width: 130px;
+} */
