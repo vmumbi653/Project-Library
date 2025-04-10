@@ -5,6 +5,7 @@ const newBookBtn = document.getElementById('newBook');
 const dialog = document.getElementById('dialog');
 const submitBtn = document.getElementById('submit');
 const form = document.getElementById('form');
+const cancelBtn = document.getElementsByClassName('cancel');
 
 
 const title = document.getElementById('title');
@@ -73,7 +74,6 @@ const container = document.querySelector('.card-container');
 // let content;
 
     function bookDisplay(book) {
-        console.log("Book object in bookDisplay:", book); // Check the book object here
     const card = document.createElement('div');
     card.classList.add('card');
     container.appendChild(card);
@@ -83,7 +83,7 @@ const container = document.querySelector('.card-container');
 
     //create elements for book properties
     const title = document.createElement('h4');
-    title.textContent = book.title;
+    title.textContent = `${book.title}`;
     cardBody.appendChild(title);
 
     const author = document.createElement('p');
@@ -94,12 +94,21 @@ const container = document.querySelector('.card-container');
     pages.textContent = `${book.pages} pages`;
     cardBody.appendChild(pages);
 
+    //create remove button
     const removeBtn = document.createElement('button');
     cardBody.appendChild(removeBtn);
     removeBtn.textContent = "Remove";
     removeBtn.onclick = removeBook;
 
     removeBtn.setAttribute('class', 'bookId');
+
+    //create read status button
+    const statusBtn = document.createElement('button');
+    statusBtn.classList.add('statusBtn'); 
+    statusBtn.textContent = "read";
+   
+    cardBody.appendChild(statusBtn);
+    
 
     card.appendChild(cardBody);
     container.appendChild(card);
@@ -110,6 +119,8 @@ const container = document.querySelector('.card-container');
 newBookBtn.addEventListener("click", () => {
     dialog.showModal();
 });
+
+
 
 //create a remove book function
 
@@ -123,6 +134,12 @@ function removeBook() {
 
 }
 bookDisplay();
+
+cancelBtn.addEventListener('click', () => {
+    container.innerHTML = ''
+    dialog.close();
+})
+
 
 
 

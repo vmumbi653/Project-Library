@@ -32,7 +32,7 @@ html {
     min-height: 100vh;
     min-width: 100vw;
     background-image: url(sunset.jpg);
-    background-color: #a58569;
+    background-color: #e9dcd6;
     cursor: pointer;
 }
 body {
@@ -51,6 +51,7 @@ body {
     padding: 20px;
     border: 1px solid black;
     border-radius: 20px;
+    /* background-color: #746770; */
     /* background-color: #34251b; */
     background-color: #5b2925;
     width: 200px;
@@ -60,6 +61,7 @@ body {
     font-weight: bold;
 }
 
+
 h1, p, h4 {
     text-align: center;
     color: white;
@@ -67,18 +69,20 @@ h1, p, h4 {
 
 h1 {
     font-family: 'alluraregular';
-    font-size: 50px;
+    font-size: 30px;
     font-weight: 900;
 }
 
 .header-container {
     background-color:#5b2925;
+    /* background-color: #af8382; */
     margin: 0;
     padding: 0;
     width: 100vw;
     margin: 0;
     padding-top: 5px;
     padding-bottom: 5px;
+    /* height: 50px; */
     
    
 }
@@ -86,6 +90,64 @@ h1 {
     font-family: 'alluraregular';
     font-size: 30px;
 }
+
+button {
+    border-radius: 6px;
+    width: 100px;
+    padding: 5px;
+    font-size: 15px;
+    border: 1px solid black;
+    box-shadow: 0 0 5px #5b2925;
+
+    
+}
+
+button:active {
+    border-radius: 8px;
+    border-color: #5b2925;
+    outline-color: transparent;
+    box-shadow:0 0 5px #e9dcd6;
+}
+
+dialog {
+    width: 300px;
+    height: 300px;
+    border-radius: 12px;
+    border: 4px #5b2925;
+    border: 4px solid #5b2925;
+    background-color: #e9dcd6;
+    
+
+    /* outline-color: transparent; */
+}
+dialog::backdrop {
+    backdrop-filter: blur(5px);
+}
+
+
+input {
+    font-family: inherit;
+    font-size: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    width: auto;
+    height: 30px;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    gap: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+input:focus {
+    outline-color: transparent;
+    border: 2px #e9dcd6;
+    box-shadow: 0 0 5px grey;
+}
+
 
 /* input[type=checkbox] {
     height: 0;
