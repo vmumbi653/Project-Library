@@ -6,8 +6,6 @@ const dialog = document.getElementById('dialog');
 const submitBtn = document.getElementById('submit');
 const form = document.getElementById('form');
 const toggleBtn = document.querySelectorAll('.toggle');
-// const cancelBtn = document.getElementsByClassName('cancel');
-
 
 const title = document.getElementById('title');
 const author = document.getElementById('author');
@@ -24,7 +22,6 @@ function Book(title, author, pages, read=false) {
     this.id = crypto.randomUUID(); //add random UUID to each book
 
     this.BookId = `book${++Book.id}`;
-  
 
 }
 Book.id = 0;
@@ -50,31 +47,12 @@ function addBookToLibrary(book) {
         bookDisplay(myLibrary[i]);
     }
     console.log("Book object in addBookToLibrary:", book); // Check the book object here
-
-//    let newBook = new Book(title.value, author.value, pages.value);
-    //push book object itself to array
 }
-
-
-const book1 = new Book ('The Bat', 'Jo Nesbo', '425');
-const book2 = new Book ('Purple Panties', 'Zane', '200');
-const book3 = new Book ('The Kite Runner', 'Khaled Hossein', '371');
-const book4 = new Book ('The Litigators', 'John Grisham', '470');
-// const book5 = new Book ('The Killing', 'David Hewson', '707', 'read');
-// const book6 = new Book ('The Killing II', 'David Hewson', '539', 'read');
-
-myLibrary.push(book1);
-myLibrary.push(book2);
-myLibrary.push(book3);
-myLibrary.push(book4)
-// book5.addBookToLibrary();
-// book6.addBookToLibrary();
 
 //test new book object is stored in array//
 console.log(myLibrary);
 
 const container = document.querySelector('.card-container');
-// let content;
 
     function bookDisplay(book) {
     const card = document.createElement('div');
@@ -119,7 +97,6 @@ const container = document.querySelector('.card-container');
     toggleBtn.addEventListener('click', () => {
         toggleStatus(book.id);
     })
-    
 
     card.appendChild(cardBody);
     container.appendChild(card);
@@ -130,8 +107,6 @@ const container = document.querySelector('.card-container');
 newBookBtn.addEventListener("click", () => {
     dialog.showModal();
 });
-
-
 
 //create a remove book function
 
@@ -159,6 +134,21 @@ function toggleStatus(bookId) {
 }
 
 
+//  const book1 = new Book ('The Bat', 'Jo Nesbo', '425');
+// const book2 = new Book ('Purple Panties', 'Zane', '200');
+// const book3 = new Book ('The Kite Runner', 'Khaled Hossein', '371');
+// const book4 = new Book ('The Litigators', 'John Grisham', '470');
+// const book5 = new Book ('The Killing', 'David Hewson', '707');
+// const book6 = new Book ('The Killing II', 'David Hewson', '539');
+
+// myLibrary.push(book1);
+// myLibrary.push(book2);
+// myLibrary.push(book3);
+// myLibrary.push(book4);
+// myLibrary.push(book5);
+// myLibrary.push(book6);
+
+// console.log(myLibrary);
 
   
 
