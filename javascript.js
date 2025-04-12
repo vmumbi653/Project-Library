@@ -5,7 +5,8 @@ const newBookBtn = document.getElementById('newBook');
 const dialog = document.getElementById('dialog');
 const submitBtn = document.getElementById('submit');
 const form = document.getElementById('form');
-const cancelBtn = document.getElementsByClassName('cancel');
+const toggleBtn = document.querySelectorAll('.toggle');
+// const cancelBtn = document.getElementsByClassName('cancel');
 
 
 const title = document.getElementById('title');
@@ -14,18 +15,20 @@ const pages = document.getElementById('pages');
 
 
 
-
 //create book constructor
-function Book(title, author, pages) {
+function Book(title, author, pages, read=false) {
     this.title =  title;
     this.author = author;
     this.pages = pages;
+    this.read = read;
     this.id = crypto.randomUUID(); //add random UUID to each book
+
     this.BookId = `book${++Book.id}`;
   
 
 }
 Book.id = 0;
+
 
 function bookInfo() {
     form.addEventListener("submit", (e) => {
@@ -43,7 +46,7 @@ function bookInfo() {
 
 function addBookToLibrary(book) {
     container.innerHTML = '';
-    for(let i = 0; i <= myLibrary.length; i++) {
+    for(let i = 0; i < myLibrary.length; i++) {
         bookDisplay(myLibrary[i]);
     }
     console.log("Book object in addBookToLibrary:", book); // Check the book object here
@@ -99,15 +102,23 @@ const container = document.querySelector('.card-container');
     cardBody.appendChild(removeBtn);
     removeBtn.textContent = "Remove";
     removeBtn.onclick = removeBook;
+    removeBtn.setAttribute('data-id', book.id);
 
     removeBtn.setAttribute('class', 'bookId');
 
     //create read status button
-    const statusBtn = document.createElement('button');
-    statusBtn.classList.add('statusBtn'); 
-    statusBtn.textContent = "read";
+    const toggleBtn = document.createElement('button');
+    toggleBtn.classList.add('toggle'); 
+    toggleBtn.textContent = book.read ? "Read" : "Not Read";
+    toggleBtn.type = 'button';
+    toggleBtn.setAttribute("data-id", book.id);
    
-    cardBody.appendChild(statusBtn);
+    cardBody.appendChild(toggleBtn);
+
+    //event listener for toggeBtn
+    toggleBtn.addEventListener('click', () => {
+        toggleStatus(book.id);
+    })
     
 
     card.appendChild(cardBody);
@@ -135,47 +146,18 @@ function removeBook() {
 }
 bookDisplay();
 
-cancelBtn.addEventListener('click', () => {
-    container.innerHTML = ''
-    dialog.close();
-})
+
+function toggleStatus(bookId) {
+    const book = myLibrary.find(book =>book.id === bookId);
+
+    if(book) {
+        book.read = !book.read;
+        addBookToLibrary(); //re-render the list
+    }
 
 
+}
 
-
-// form.addEventListener("submit", (e) => {
-    //     e.preventDefault();
-    //     addBookToLibrary();
-    //     dialog.close();
-    // });
-
-    // function displayAllBooks() {
-//     container.innerHTML = ''; // Clear existing content
-//     myLibrary.forEach(book => {
-//       bookDisplay(book);
-//     });
-//   }
-  
-// // Iterate through the myLibrary array and display each book
-//   // Call displayAllBooks to display the books
-//   displayAllBooks();
-
-    // myLibrary.forEach((Book) => {
-    //     const card = document.createElement('div');
-    //     card.classList.add('card');
-
-    //         //creeate a multi-line string called content that containes the HTML Markup for each card layout
-    //      content = `
-    //         <div class = 'card-body'>
-    //          <h4> ${Book.title}</4>
-    //           <p>${Book.author}</p>
-    //           <p>${Book.pages}</p>
-    //         </div>
-
-    //        `;
-    //        container.innerHTML += content;
-
-    // });
 
 
   

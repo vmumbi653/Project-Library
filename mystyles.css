@@ -31,7 +31,7 @@ html {
     box-sizing: border-box;
     min-height: 100vh;
     min-width: 100vw;
-    background-image: url(sunset.jpg);
+    /* background-image: url(sunset.jpg); */
     background-color: #e9dcd6;
     cursor: pointer;
 }
@@ -98,6 +98,7 @@ button {
     font-size: 15px;
     border: 1px solid black;
     box-shadow: 0 0 5px #5b2925;
+    box-sizing: border-box;
 
     
 }
