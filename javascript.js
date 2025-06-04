@@ -14,15 +14,18 @@ const pages = document.getElementById('pages');
 
 
 //create book constructor
-function Book(title, author, pages, read=false) {
-    this.title =  title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.id = crypto.randomUUID(); //add random UUID to each book
+//rewrite with JavaScript class
+class Book {
+    constructor(title, author, pages, read=false) {
+        this.title =  title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.id = crypto.randomUUID(); //add random UUID to each book
 
-    this.BookId = `book${++Book.id}`;
+        this.BookId = `book${++Book.id}`;
 
+}
 }
 Book.id = 0;
 
@@ -46,7 +49,7 @@ function addBookToLibrary(book) {
     for(let i = 0; i < myLibrary.length; i++) {
         bookDisplay(myLibrary[i]);
     }
-    console.log("Book object in addBookToLibrary:", book); // Check the book object here
+    // console.log("Book object in addBookToLibrary:", book); // Check the book object here
 }
 
 //test new book object is stored in array//
