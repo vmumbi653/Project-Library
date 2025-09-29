@@ -148,17 +148,7 @@ input:focus {
     border: 2px #e9dcd6;
     box-shadow: 0 0 5px grey;
 }
-.error {
-    width: 100%;
-    padding: 0;
-    color: white;
-    background-color: red;
-    box-sizing: border-box;
 
-}
-.error.active {
-    padding: 4px;
-}
 
 /* invalid fields */
 input:invalid {
