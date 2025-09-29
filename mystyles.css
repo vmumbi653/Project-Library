@@ -148,3 +148,29 @@ input:focus {
     border: 2px #e9dcd6;
     box-shadow: 0 0 5px grey;
 }
+.error {
+    width: 100%;
+    padding: 0;
+    color: white;
+    background-color: red;
+    box-sizing: border-box;
+
+}
+.error.active {
+    padding: 4px;
+}
+
+/* invalid fields */
+input:invalid {
+    border: 2px solid #990000;
+    background-color: #ffdddd;
+  }
+  
+  input:focus.invalid {
+    outline: none;
+    /* make sure keyboard-only users see a change when focusing */
+    border-style: dashed;
+  }
+input:valid {
+    border: 2px solid green;
+}

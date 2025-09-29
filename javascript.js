@@ -11,6 +11,8 @@ const title = document.getElementById('title');
 const author = document.getElementById('author');
 const pages = document.getElementById('pages');
 
+const error = document.querySelector("span.error")
+
 
 
 //create book constructor
@@ -31,18 +33,42 @@ Book.id = 0;
 
 
 function bookInfo() {
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        let newBook = new Book(title.value, author.value, pages.value);
-        myLibrary.push(newBook);
-        //to reset form after submission
-        form.reset();
-        dialog.close();
+    form.addEventListener("submit", (e) => {    
+            e.preventDefault();
+            const isFormValid = showError();   //run validation
+            if(!isFormValid) {
+                return;
+            }
 
-        addBookToLibrary();
+            let newBook = new Book(title.value, author.value, pages.value);
+            myLibrary.push(newBook);
+            //to reset form after submission
+            form.reset();
+            dialog.close();
+    
+            addBookToLibrary();
+              
     }
     )};
     bookInfo();
+
+
+function showError() {
+    let isValid = true;
+    const inputs = [title, author, pages];
+
+    inputs.forEach(input => {
+        if(input.validity.valueMissing) {
+            input.setCustomValidity('Input field CANNOT be empty!!');
+            isValid = false;
+        } else {
+             input.setCustomValidity('');
+        }
+
+        input.reportValidity();
+    });
+    return isValid;
+}
 
 function addBookToLibrary(book) {
     container.innerHTML = '';
@@ -51,6 +77,9 @@ function addBookToLibrary(book) {
     }
     // console.log("Book object in addBookToLibrary:", book); // Check the book object here
 }
+
+
+
 
 //test new book object is stored in array//
 console.log(myLibrary);
@@ -122,7 +151,7 @@ function removeBook() {
     this.parentElement.remove()
 
 }
-bookDisplay();
+// bookDisplay();
 
 
 function toggleStatus(bookId) {
