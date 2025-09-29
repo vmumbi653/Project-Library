@@ -11,10 +11,6 @@ const title = document.getElementById('title');
 const author = document.getElementById('author');
 const pages = document.getElementById('pages');
 
-const error = document.querySelector("span.error")
-
-
-
 //create book constructor
 //rewrite with JavaScript class
 class Book {
